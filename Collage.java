@@ -1,28 +1,25 @@
 //Naraen Palanikumar
 //10.30.2018
-//Shepard Fairey Lab 
-//Modifies Colors in an image
+//Poster Project Lab
+//Makes a collage of pictures
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
-public class SheparFaireyLabNaraen
+public class Collage
 {
-    /**
-     * main method, to test the picture
-     *  
-     */
     public static void main(String[] args)
     {
+         //Picture 2 tPic = ;
+        
          //initializes variables
          int r = 0, g = 0, b = 0, avgrgb = 0, large = 0, small = 255, interval = 0;
          
          //sets the pictures all as the same one
-         Picture pic0 = new Picture("shepardfaireypics/naraen.jpg");
-         Picture pic1 = new Picture("shepardfaireypics/naraen.jpg");
-         Picture pic2 = new Picture("shepardfaireypics/naraen.jpg");
-         Picture pic3 = new Picture("shepardfaireypics/naraen.jpg");
+         Picture pic0 = new Picture("collage/mypicture.jpg");
+         Picture pic1 = new Picture("collage/mypicture.jpg");
+         Picture pic2 = new Picture("collage/mypicture.jpg");
+         Picture pic3 = new Picture("collage/mypicture.jpg");
          
          //initializes an array to use for the pictures
          Pixel[] method1;
@@ -114,8 +111,6 @@ public class SheparFaireyLabNaraen
          //explores the first picture after applying color palette modifications
          pic3.explore();
          
-         pic1.write("shepardfaireypics/shepfar1.jpg");
-         pic2.write("shepardfaireypics/shepfar2.jpg");
-         pic3.write("shepardfaireypics/shepfar3printhis.jpg");
+         
     }//main       
 }//class
