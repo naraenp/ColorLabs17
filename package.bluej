@@ -225,7 +225,6 @@ dependency7.from=SheparFaireyLabNaraen
 dependency7.to=Picture
 dependency7.type=UsesDependency
 <<<<<<< HEAD
-<<<<<<< HEAD
 dependency70.from=MovieMaker
 dependency70.to=Picture
 dependency70.type=UsesDependency
@@ -324,8 +323,6 @@ dependency99.to=ComicPanel
 dependency99.type=UsesDependency
 =======
 >>>>>>> parent of 72c11dc... finsihed
-=======
->>>>>>> parent of 72c11dc... finsihed
 objectbench.height=76
 objectbench.width=1346
 package.editor.height=572
@@ -333,12 +330,9 @@ package.editor.width=1248
 package.editor.x=-8
 package.editor.y=-8
 <<<<<<< HEAD
-<<<<<<< HEAD
 package.numDependencies=107
 package.numTargets=73
 =======
-=======
->>>>>>> parent of 72c11dc... finsihed
 package.numDependencies=7
 package.numTargets=7
 >>>>>>> parent of 72c11dc... finsihed
@@ -587,7 +581,6 @@ target3.width=100
 target3.x=70
 target3.y=70
 <<<<<<< HEAD
-<<<<<<< HEAD
 target30.editor.height=700
 target30.editor.width=900
 target30.editor.x=0
@@ -692,8 +685,6 @@ target39.typeParameters=
 target39.width=120
 target39.x=110
 target39.y=490
-=======
->>>>>>> parent of 72c11dc... finsihed
 =======
 >>>>>>> parent of 72c11dc... finsihed
 target4.editor.height=700
@@ -934,7 +925,6 @@ target6.width=100
 target6.x=70
 target6.y=130
 <<<<<<< HEAD
-<<<<<<< HEAD
 target60.height=50
 target60.name=Playback
 target60.showInterface=false
@@ -1031,8 +1021,6 @@ target69.typeParameters=
 target69.width=80
 target69.x=100
 target69.y=850
-=======
->>>>>>> parent of 72c11dc... finsihed
 =======
 >>>>>>> parent of 72c11dc... finsihed
 target7.editor.height=700
