@@ -257,6 +257,7 @@ dependency69.type=UsesDependency
 dependency7.from=SheparFaireyLabNaraen
 dependency7.to=Picture
 dependency7.type=UsesDependency
+<<<<<<< HEAD
 dependency70.from=ComicPanel
 dependency70.to=ThoughtBalloon
 dependency70.type=UsesDependency
@@ -353,14 +354,22 @@ dependency98.type=UsesDependency
 dependency99.from=SimpleSound
 dependency99.to=SoundExplorer
 dependency99.type=UsesDependency
+=======
+>>>>>>> parent of 72c11dc... finsihed
 objectbench.height=76
 objectbench.width=1346
 package.editor.height=572
 package.editor.width=1248
 package.editor.x=-8
+<<<<<<< HEAD
 package.editor.y=0
 package.numDependencies=118
 package.numTargets=73
+=======
+package.editor.y=-8
+package.numDependencies=7
+package.numTargets=7
+>>>>>>> parent of 72c11dc... finsihed
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
@@ -617,6 +626,7 @@ target3.name=TextBalloon
 target3.showInterface=false
 target3.type=AbstractTarget
 target3.typeParameters=
+<<<<<<< HEAD
 target3.width=90
 target3.x=360
 target3.y=190
@@ -728,6 +738,15 @@ target4.editor.height=700
 target4.editor.width=900
 target4.editor.x=183
 target4.editor.y=5
+=======
+target3.width=100
+target3.x=70
+target3.y=70
+target4.editor.height=700
+target4.editor.width=900
+target4.editor.x=0
+target4.editor.y=0
+>>>>>>> parent of 72c11dc... finsihed
 target4.height=50
 target4.name=FloodFillNaraen
 target4.naviview.expanded=true
@@ -972,6 +991,7 @@ target6.name=SimpleInput
 target6.showInterface=false
 target6.type=ClassTarget
 target6.typeParameters=
+<<<<<<< HEAD
 target6.width=90
 target6.x=460
 target6.y=240
@@ -1085,6 +1105,15 @@ target7.editor.height=700
 target7.editor.width=900
 target7.editor.x=0
 target7.editor.y=0
+=======
+target6.width=100
+target6.x=70
+target6.y=130
+target7.editor.height=700
+target7.editor.width=900
+target7.editor.x=160
+target7.editor.y=131
+>>>>>>> parent of 72c11dc... finsihed
 target7.height=50
 target7.name=Rectangle
 target7.showInterface=false
