@@ -30,36 +30,19 @@ public class Picture extends SimplePicture
         super();
     }
 
-    public void gray()
-    {  
-        //copies all pixels into one array takes a lot of spacesd
-        Pixel[] p = this.getPixels();
-        //Pixel pixel = null;
-        //int intensity = 0;
-
-        for (Pixel i: p)
-
-        {
-
-            int j = (i.getRed() + i.getBlue() + i.getGreen())/3;
-
-            i.setRed(j);
-            i.setGreen(j);
-            i.setBlue(j);
-        }
-    }
-
-    public void invert()
+    public void copy (Picture sourcePicture, int xpos, int ypos)
     {
-        Pixel[] p = this.getPixels();
+        Pixel sourcePixel = null;
+        Pixel targetPixel = null;
 
-        for (Pixel i: p)
+        for (int sourceX = 0, targetX = xpos;sourceX < sourcePicture.getWidth();sourceX++, targetX++)
         {
-            i.setRed((255-i.getRed()));
-
-            i.setBlue((255-i.getBlue()));
-
-            i.setGreen((255-i.getGreen()));
+            for (int sourceY = 0, targetY = ypos;sourceY < sourcePicture.getHeight();sourceY++, targetY++)
+            {
+                sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
+                targetPixel = this.getPixel(targetX, targetY);
+                targetPixel.setColor(sourcePixel.getColor());
+            }
         }
     }
 
@@ -81,6 +64,7 @@ public class Picture extends SimplePicture
                     targetPixel.setColor(sourcePixel.getColor());
                 }
             }
+
             //increasing divide increases the amount the image is divided
             divide++;
             //recursively called
@@ -88,51 +72,35 @@ public class Picture extends SimplePicture
         }
     }
 
-    public void rotate (Picture sourcePicture,int xpos, int ypos)
+    public void invert()
     {
-        Pixel sourcePixel = null;
-        Pixel targetPixel = null;
-        //sets y coordinates as x coordinates
-        for (int sourceX = 0, targetY = ypos;
-        sourceX < sourcePicture.getWidth();
-        sourceX++, targetY++)
+        Pixel[] p = this.getPixels();
+
+        for (Pixel i: p)
         {
-            for (int sourceY = 0, targetX = sourcePicture.getHeight()+xpos;
-            sourceY < sourcePicture.getHeight();
-            sourceY++, targetX--)
-            {
-                sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
-                targetPixel = this.getPixel(targetX, targetY);
-                targetPixel.setColor(sourcePixel.getColor());
-            }               
+            i.setRed((255-i.getRed()));
+
+            i.setBlue((255-i.getBlue()));
+
+            i.setGreen((255-i.getGreen()));
         }
     }
 
-    public void copy (Picture sourcePicture, int xpos, int ypos)
-    {
-        Pixel sourcePixel = null;
-        Pixel targetPixel = null;
+    public void gray()
+    {  
+        Pixel[] p = this.getPixels();
 
-        for (int sourceX = 0, targetX = xpos;
-        sourceX < sourcePicture.getWidth();
-        sourceX++, targetX++)
+        for (Pixel i: p)
+
         {
-            for (int sourceY = 0, targetY = ypos;
-            sourceY < sourcePicture.getHeight();
-            sourceY++, targetY++)
-            {
-                //sets the target pixel color to the source pixel color
-                sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
-                targetPixel = this.getPixel(targetX, targetY);
-                targetPixel.setColor(sourcePixel.getColor());
-            }
+            int j = (i.getRed() + i.getBlue() + i.getGreen())/3;
+
+            i.setRed(j);
+            i.setGreen(j);
+            i.setBlue(j);
         }
     }
 
-    /**
-     * mirrors around a vertical line in the middle of the picture
-     * based on its width
-     */
     public void mirrorVertical()
     {
         int width = this.getWidth();
@@ -154,67 +122,21 @@ public class Picture extends SimplePicture
         }
     }
 
-    /**
-
-     * mirrors around a horizontal line in the middle of the picture
-
-     * based on its width
-
-     */
-
-    public void mirrorHorizontal()
-
+    public void rotate (Picture sourcePicture,int xpos, int ypos)
     {
+        Pixel sourcePixel = null;
+        Pixel targetPixel = null;
+        //sets y coordinates as x coordinates
 
-        int height = this.getHeight();
-
-        int mirrorPoint = height/2;
-
-        Pixel topPixel = null;
-        Pixel bottomPixel = null;
-
-        for (int x = 0; x < getWidth(); x++)
+        for (int sourceX = 0, targetY = ypos;sourceX < sourcePicture.getWidth();sourceX++, targetY++)
         {
-            //loop from 0 to middle
-            for (int y = 0; y < mirrorPoint; y++)
+            for (int sourceY = 0, targetX = sourcePicture.getHeight()+xpos;sourceY < sourcePicture.getHeight();sourceY++, targetX--)
             {
-                topPixel = getPixel(x,y);
-                bottomPixel = getPixel(x,height-1-y);
-                bottomPixel.setColor(topPixel.getColor());
-            }
+                sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
+                targetPixel = this.getPixel(targetX, targetY);
+                targetPixel.setColor(sourcePixel.getColor());
+            }               
         }
-    }
-    //277,30
-
-    public void mirrorTemple()
-    {
-        int width = this.getWidth();
-        int mirrorPoint = width/2;
-
-        Pixel leftPixel = null;
-
-        Pixel rightPixel = null;
-
-        for (int y = 0; y < 148; y++)
-
-        {
-
-            //loop from 0 to middle
-
-            for (int x = 0; x < mirrorPoint; x++)
-
-            {
-
-                leftPixel = getPixel(x,y);
-
-                rightPixel = getPixel(width-1-x,y);
-
-                rightPixel.setColor(leftPixel.getColor());
-
-            }
-
-        }
-
     }
 
     public void copyflowerSmaller(Picture source, String option)
@@ -299,5 +221,4 @@ public class Picture extends SimplePicture
         Picture pictObj = new Picture(fileName);
         pictObj.explore();
     }
-
 } // this } is the end of class Picture, put all new methods before this
