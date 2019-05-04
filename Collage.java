@@ -5,7 +5,7 @@ public class Collage
         Picture original = new Picture("collage/thonk.png");
         Picture recursive = new Picture("collage/thonk.png");
         Picture invert = new Picture("collage/thonk.png");
-        Picture gray = new Picture("collage/thonk.png");
+        Picture sepia = new Picture("collage/thonk.png");
         Picture mVertical = new Picture("collage/thonk.png");
         Picture rotate = new Picture("collage/thonk.png");
         
@@ -16,15 +16,15 @@ public class Collage
 
         //copies recursive of picture onto original picture
         canvas.copy(original,225, 25);
-        canvas.recursive(recursive,2,125,25);
+        canvas.recursive(recursive,2,225,25);
 
         //inverts colors
         invert.invert();
         canvas.copy(invert,425,25);
 
         //converts to grey
-        gray.gray();
-        canvas.copy(gray,25,225);
+        sepia.sepia();
+        canvas.copy(sepia,25,225);
 
         //mirrors over vertical line
         mVertical.mirrorVertical();

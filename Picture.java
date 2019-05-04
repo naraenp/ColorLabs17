@@ -41,6 +41,7 @@ public class Picture extends SimplePicture
             {
                 sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
                 targetPixel = this.getPixel(targetX, targetY);
+
                 targetPixel.setColor(sourcePixel.getColor());
             }
         }
@@ -61,6 +62,7 @@ public class Picture extends SimplePicture
                 {
                     sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
                     targetPixel = this.getPixel(targetX, targetY);
+
                     targetPixel.setColor(sourcePixel.getColor());
                 }
             }
@@ -74,30 +76,49 @@ public class Picture extends SimplePicture
 
     public void invert()
     {
+        //creates an array of pixels p
         Pixel[] p = this.getPixels();
 
         for (Pixel i: p)
         {
             i.setRed((255-i.getRed()));
-
             i.setBlue((255-i.getBlue()));
-
             i.setGreen((255-i.getGreen()));
         }
     }
 
-    public void gray()
+    public void sepia()
     {  
+        //creates an array of pixels p
         Pixel[] p = this.getPixels();
 
         for (Pixel i: p)
 
         {
-            int j = (i.getRed() + i.getBlue() + i.getGreen())/3;
+            //Found the formula for making a sepia image from this link
+            //https://www.dyclassroom.com/image-processing-project/how-to-convert-a-color-image-into-sepia-image
+            int r = i.getRed(); 
+            int g = i.getGreen();
+            int b = i.getBlue();
 
-            i.setRed(j);
-            i.setGreen(j);
-            i.setBlue(j);
+            double tr = 0.393*r + 0.769*g + 0.189*b;
+            double tg = 0.349*r + 0.686*g + 0.168*b;
+            double tb = 0.272*r + 0.534*g + 0.131*b;
+            
+            if (tr > 255)
+                i.setRed(255);
+            else
+                i.setRed((int)tr);
+            
+            if (tg > 255)
+                i.setGreen(255);
+            else
+                i.setGreen((int)tg);
+            
+            if (tg > 255)
+                i.setBlue(255);
+            else
+                i.setBlue((int)tb);
         }
     }
 
@@ -107,13 +128,11 @@ public class Picture extends SimplePicture
         int mirrorPoint = width/2;
 
         Pixel leftPixel = null;
-
         Pixel rightPixel = null;
 
-        for (int y = 0; y < getHeight(); y++)
+        for (int y = 0; y < getHeight(); y++) //loops from top to bottom
         {
-            //loop from 0 to middle
-            for (int x = 0; x < mirrorPoint; x++)
+            for (int x = 0; x < mirrorPoint; x++) //loops from left to mid point
             {
                 leftPixel = getPixel(x,y);
                 rightPixel = getPixel(width-1-x,y);
@@ -126,7 +145,6 @@ public class Picture extends SimplePicture
     {
         Pixel sourcePixel = null;
         Pixel targetPixel = null;
-        //sets y coordinates as x coordinates
 
         for (int sourceX = 0, targetY = ypos;sourceX < sourcePicture.getWidth();sourceX++, targetY++)
         {
@@ -134,28 +152,9 @@ public class Picture extends SimplePicture
             {
                 sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
                 targetPixel = this.getPixel(targetX, targetY);
+
                 targetPixel.setColor(sourcePixel.getColor());
             }               
-        }
-    }
-
-    public void copyflowerSmaller(Picture source, String option)
-    {
-        Pixel sourcePixel = null;
-        Pixel targetPixel = null;
-
-        for (int sourceX = 0, targetX = 0;
-        sourceX < source.getWidth();
-        sourceX+=2, targetX++)
-        {
-            for (int sourceY = 0, targetY = 0;
-            sourceY < source.getHeight();
-            sourceY+=2, targetY++)
-            {
-                sourcePixel = source.getPixel(sourceX,sourceY);
-                targetPixel = this.getPixel(targetX,targetY);
-                targetPixel.setColor(sourcePixel.getColor());
-            }
         }
     }
 
