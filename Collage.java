@@ -2,36 +2,40 @@ public class Collage
 {
     public static void main (String[] args)
     {
-        Picture mypicture = new Picture("images/mypicture.jpeg");
-        Picture canvas = new Picture("images/canvas.jpeg");
+        Picture original = new Picture("collage/thonk.jpg");
+        Picture recursive = new Picture("collage/thonk.jpg");
+        Picture invert = new Picture("collage/thonk.jpg");
+        Picture gray = new Picture("collage/thonk.jpg");
+        Picture mVertical = new Picture("collage/thonk.jpg");
+        Picture rotate = new Picture("collage/thonk.jpg");
+        
+        Picture canvas = new Picture("collage/canvas.jpg");
 
+        
+        
         //copies original picture
-        canvas.copy(mypicture,0,0);
+        canvas.copy(original,25,25);
 
         //copies recursive of picture onto original picture
-        canvas.recursive(mypicture,2,0,0);
+        canvas.recursive(recursive,2,125,25);
 
         //inverts colors
-        mypicture.invert();
-        canvas.copy(mypicture,700,0);
+        invert.invert();
+        canvas.copy(invert,225,25);
 
         //converts to grey
-        mypicture.gray();
-        canvas.copy(mypicture,1400,0);
+        gray.gray();
+        canvas.copy(gray,25,125);
 
         //mirrors over vertical line
-        mypicture.mirrorVertical();
-        canvas.copy(mypicture,0,700);
-
-        //mirrors over horizontal line
-        mypicture.mirrorHorizontal();
-        canvas.copy(mypicture,700,700);
+        mVertical.mirrorVertical();
+        canvas.copy(mVertical,125,125);
 
         //rotates image 90 degrees clockwise
-        canvas.rotate(mypicture,1400,700);
+        canvas.rotate(rotate,225,125);
 
         canvas.explore();
 
-        canvas.write("images/finalcollege.jpg");
+        canvas.write("collage/naraencollage.jpg");
     }
 }
