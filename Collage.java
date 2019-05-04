@@ -11,12 +11,11 @@ public class Collage
         
         Picture canvas = new Picture("collage/canvas.jpg");
 
-        
-        
         //copies original picture
         canvas.copy(original,25,25);
 
         //copies recursive of picture onto original picture
+        canvas.copy(original,125, 25);
         canvas.recursive(recursive,2,125,25);
 
         //inverts colors

@@ -33,52 +33,33 @@ public class Picture extends SimplePicture
     public void gray()
     {  
         //copies all pixels into one array takes a lot of spacesd
-        Pixel[] pix = this.getPixels();
-        Pixel pixel = null;
-        int intensity = 0;
+        Pixel[] p = this.getPixels();
+        //Pixel pixel = null;
+        //int intensity = 0;
 
-        for (Pixel spot: pix)
+        for (Pixel i: p)
 
         {
 
-            int ave = (spot.getRed() + spot.getBlue() + spot.getGreen())/3;
+            int j = (i.getRed() + i.getBlue() + i.getGreen())/3;
 
-            spot.setRed(ave);
-            spot.setGreen(ave);
-            spot.setBlue(ave);
-        }
-    }
-
-    public void hair()
-
-    {
-
-        Pixel[] pix = this.getPixels();
-
-        for (Pixel spot: pix)
-        {
-            if (spot.getRed() < 30 && spot.getBlue() < 30 && spot.getGreen() < 30)
-            {
-                spot.setColor(new Color(228,201,255));
-            }
+            i.setRed(j);
+            i.setGreen(j);
+            i.setBlue(j);
         }
     }
 
     public void invert()
     {
-        Pixel[] pix = this.getPixels();
+        Pixel[] p = this.getPixels();
 
-        for (Pixel spot: pix)
+        for (Pixel i: p)
         {
-            int value1 = 255-spot.getRed();
-            spot.setRed(value1);
+            i.setRed((255-i.getRed()));
 
-            int value2 = 255-spot.getBlue();
+            i.setBlue((255-i.getBlue()));
 
-            spot.setBlue(value2);
-
-            int value3 = 255-spot.getGreen();
-            spot.setGreen(value3);
+            i.setGreen((255-i.getGreen()));
         }
     }
 
@@ -89,49 +70,22 @@ public class Picture extends SimplePicture
 
         if (divide > 17)
             return;
-
         else
-
         {          
-
-            for (int sourceX = 0, targetX = xpos;
-
-            sourceX < sourcePicture.getWidth();
-
-            sourceX += divide, targetX++)
-
+            for (int sourceX = 0, targetX = xpos; sourceX < sourcePicture.getWidth(); sourceX += divide, targetX++)
             {
-
-                for (int sourceY = 0, targetY = ypos;
-
-                sourceY < sourcePicture.getHeight();
-
-                sourceY += divide, targetY++)
-
+                for (int sourceY = 0, targetY = ypos;sourceY < sourcePicture.getHeight();sourceY += divide, targetY++)
                 {
-
-                    //sets the target pixel color to the source pixel color
-
                     sourcePixel = sourcePicture.getPixel(sourceX, sourceY);
-
                     targetPixel = this.getPixel(targetX, targetY);
-
                     targetPixel.setColor(sourcePixel.getColor());
-
                 }
-
             }
-
             //increasing divide increases the amount the image is divided
-
             divide++;
-
             //recursively called
-
             recursive(sourcePicture,divide,xpos,ypos);
-
         }
-
     }
 
     public void rotate (Picture sourcePicture,int xpos, int ypos)
