@@ -1,12 +1,10 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
-------------------------------------------------------------------------
+Naraen Palanikumar
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+How I manipulated the original image
+
+1) I thought everything looked better in grayscale so I made the entire thing grayscale
+2) I made a vertical and horizontal mirror method
+3) I made a rotate and negation method
+4) Obviously made the original recursive method
+
+Put each of these next to each other to form the collage you see today.

@@ -1,6 +1,6 @@
+//Naraen Palanikumar
 
 import java.awt.*;
-
 import java.awt.font.*;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
@@ -30,7 +30,7 @@ public class Picture extends SimplePicture
         super();
     }
 
-    public void copy (Picture sourcePicture, int xpos, int ypos)
+    public void copy (Picture sourcePicture, int xpos, int ypos) //copy method
     {
         Pixel sourcePixel = null;
         Pixel targetPixel = null;
@@ -47,7 +47,7 @@ public class Picture extends SimplePicture
         }
     }
 
-    public void recursive(Picture sourcePicture, int divide, int xpos, int ypos)
+    public void recursive(Picture sourcePicture, int divide, int xpos, int ypos) //divides the picture and layers it recursively
     {
         Pixel sourcePixel = null;
         Pixel targetPixel = null;
@@ -67,18 +67,19 @@ public class Picture extends SimplePicture
                 }
             }
 
-            //increasing divide increases the amount the image is divided
+            //increasing divide increases the amount the image is divided each time
             divide++;
             //recursively called
             recursive(sourcePicture,divide,xpos,ypos);
         }
     }
 
-    public void invert()
+    public void invert() //invert method
     {
         //creates an array of pixels p
         Pixel[] p = this.getPixels();
 
+        //inverts each pixels and repalce
         for (Pixel i: p)
         {
             i.setRed((255-i.getRed()));
@@ -87,42 +88,26 @@ public class Picture extends SimplePicture
         }
     }
 
-    public void sepia()
-    {  
-        //creates an array of pixels p
-        Pixel[] p = this.getPixels();
+    public void mirrorHorizontal() //mirrors it along x axis
+    {
+        int height = this.getHeight();
+        int mirrorPoint = height/2;
 
-        for (Pixel i: p)
+        Pixel topPixel = null;
+        Pixel bottomPixel = null;
 
+        for (int x = 0; x < getWidth(); x++)//loop from 0 to end of x
         {
-            //Found the formula for making a sepia image from this link
-            //https://www.dyclassroom.com/image-processing-project/how-to-convert-a-color-image-into-sepia-image
-            int r = i.getRed(); 
-            int g = i.getGreen();
-            int b = i.getBlue();
-
-            double tr = 0.393*r + 0.769*g + 0.189*b;
-            double tg = 0.349*r + 0.686*g + 0.168*b;
-            double tb = 0.272*r + 0.534*g + 0.131*b;
-            
-            if (tr > 255)
-                i.setRed(255);
-            else
-                i.setRed((int)tr);
-            
-            if (tg > 255)
-                i.setGreen(255);
-            else
-                i.setGreen((int)tg);
-            
-            if (tg > 255)
-                i.setBlue(255);
-            else
-                i.setBlue((int)tb);
+            for (int y = 0; y < mirrorPoint; y++) //loop from bottom to mirror point
+            {
+                topPixel = getPixel(x,y);
+                bottomPixel = getPixel(x,height-1-y);
+                bottomPixel.setColor(topPixel.getColor());
+            }
         }
     }
 
-    public void mirrorVertical()
+    public void mirrorVertical() //mirrors it along y axis
     {
         int width = this.getWidth();
         int mirrorPoint = width/2;
@@ -141,11 +126,12 @@ public class Picture extends SimplePicture
         }
     }
 
-    public void rotate (Picture sourcePicture,int xpos, int ypos)
+    public void rotate (Picture sourcePicture,int xpos, int ypos) //rotate method for my image
     {
         Pixel sourcePixel = null;
         Pixel targetPixel = null;
 
+        //effectively replaces each pixel rotating
         for (int sourceX = 0, targetY = ypos;sourceX < sourcePicture.getWidth();sourceX++, targetY++)
         {
             for (int sourceY = 0, targetX = sourcePicture.getHeight()+xpos;sourceY < sourcePicture.getHeight();sourceY++, targetX--)
